@@ -50,6 +50,12 @@ typings/
 # Optional npm cache directory
 .npm
 
+# package-lock
+package-lock.json
+
+# mac system files
+.DS_Store
+
 # Optional eslint cache
 .eslintcache
 
