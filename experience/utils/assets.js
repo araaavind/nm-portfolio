@@ -1,32 +1,62 @@
 export default [
   {
-    name: 'dots',
+    name: 'dot',
     type: 'imageTexture',
-    path: '/static/dots.jpg'
-  },
-  {
-    name: 'dotsAlpha',
-    type: 'imageTexture',
-    path: '/static/dotsAlpha.png'
+    path: '/static/cover/dot.png'
   },
   {
     name: 'sun',
     type: 'imageTexture',
-    path: '/static/sun.jpg'
+    path: '/static/cover/sun.png'
   },
   {
-    name: 'sunAlpha',
+    name: 'bg',
     type: 'imageTexture',
-    path: '/static/sunAlpha.png'
+    path: '/static/cover/bg.png'
+  },
+  {
+    name: 'mount1',
+    type: 'imageTexture',
+    path: '/static/cover/mount1.png'
+  },
+  {
+    name: 'mount2',
+    type: 'imageTexture',
+    path: '/static/cover/mount2.png'
+  },
+  {
+    name: 'mount3',
+    type: 'imageTexture',
+    path: '/static/cover/mount3.png'
+  },
+  {
+    name: 'mount4',
+    type: 'imageTexture',
+    path: '/static/cover/mount4.png'
+  },
+  {
+    name: 'mount5',
+    type: 'imageTexture',
+    path: '/static/cover/mount5.png'
   },
   {
     name: 'house',
     type: 'imageTexture',
-    path: '/static/house.jpg'
+    path: '/static/cover/house.png'
   },
   {
-    name: 'houseAlpha',
+    name: 'houseAndTrees',
     type: 'imageTexture',
-    path: '/static/houseAlpha.jpg'
+    path: '/static/cover/houseandtrees.png'
+  },
+  {
+    name: 'trees',
+    type: 'imageTexture',
+    path: '/static/cover/trees.png'
+  },
+  {
+    name: 'birds',
+    type: 'imageTexture',
+    path: '/static/cover/birds.png'
   }
 ];

@@ -41,6 +41,9 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Reusable code snippets
+recycle-bin/
+
 # TypeScript v1 declaration files
 typings/
 

@@ -32,6 +32,8 @@ export default class Camera {
       50
     );
     this.scene.add(this.orthographicCamera);
+    this.orthographicCamera.position.set(0, 0, 25);
+    this.orthographicCamera.lookAt(0, 0, 0);
   }
 
   resize() {

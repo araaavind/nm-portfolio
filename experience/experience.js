@@ -7,7 +7,6 @@ import Helpers from './utils/helpers';
 import assets from './utils/assets';
 
 import Camera from './camera'
-import Controls from './controls';
 import Renderer from './renderer';
 
 import World from './world/world';
@@ -24,11 +23,10 @@ export default class Experience {
     this.time = new Time();
     this.scene = new THREE.Scene();
     this.camera = new Camera();
-    this.helpers = new Helpers();
-    this.controls = new Controls();
-    this.renderer = new Renderer();
     this.resources = new Resources(assets);
     this.world = new World();
+    this.helpers = new Helpers();
+    this.renderer = new Renderer();
 
     this.time.on('update', () => this.update());
     this.sizes.on('resize', () => this.resize());
