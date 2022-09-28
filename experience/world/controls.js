@@ -22,7 +22,7 @@ export default class Controls {
     this.scrollSnapTrigger = ScrollTrigger.create({
       id: 'scroll-snap',
       snap: {
-        snapTo: [0, .035, .08, .12, .16, .2, .32, .68, .96, 1],
+        snapTo: [0, .035, .08, .245, .52, .73, .98, 1],
         directional: false,
         duration: { min: .2, max: 1.2 },
         ease: 'Power1.easeInOut',
@@ -31,7 +31,7 @@ export default class Controls {
     });
   }
 
-  setHomeScreenAnimations() {
+  setHomeScreenAnimations(triggerConfig, showMarkers = false) {
     const menuTl = new GSAP.timeline({ defaults: { ease: 'Power2.inOut', duration: .5 } });
     menuTl
       .to('.menu-item', {
@@ -51,19 +51,21 @@ export default class Controls {
     this.homeScreenTrigger = ScrollTrigger.create({
       id: 'home-screen',
       animation: menuTl,
-      trigger: '.navbar',
-      start: 'top bottom',
-      end: 'center top',
+      trigger: triggerConfig.trigger,
+      start: triggerConfig.start,
+      end: triggerConfig.end,
+      markers: showMarkers,
       toggleActions: 'play complete restart none'
     });
   }
 
-  setParticleLineAnimations() {
+  setParticleLineAnimations(triggerConfig, showMarkers = false) {
     const particleTl = new GSAP.timeline();
     particleTl
       .to(this.particles.particleMesh.geometry.attributes.position.array, {
         endArray: () => calculateVertices(this.particles),
         ease: 'Power1.easeInOut',
+        duration: 1.35,
         onUpdate: () => {
           this.particles.particleMesh.geometry.attributes.position.needsUpdate = true;
         },
@@ -77,12 +79,13 @@ export default class Controls {
     ScrollTrigger.create({
       id: 'particle-line',
       animation: particleTl,
-      trigger: '.navbar',
-      start: 'center top',
-      end: 'center top',
+      trigger: triggerConfig.trigger,
+      start: triggerConfig.start,
+      end: triggerConfig.end,
       toggleActions: 'play none reverse none',
-      scrub: 3,
+      // scrub: 3,
       invalidateOnRefresh: true,
+      markers: showMarkers,
       onEnter: () => {
         document.querySelector('.navbar').classList.add('sticky');
       },
@@ -139,18 +142,33 @@ export default class Controls {
     ScrollTrigger.killAll();
     if (device === 'desktop') {
       this.setScrollSnaps();
-      this.setHomeScreenAnimations();
-      this.setParticleLineAnimations();
+      this.setHomeScreenAnimations({
+        trigger: '.navbar',
+        start: 'top bottom',
+        end: 'center top'
+      }, false);
+      this.setParticleLineAnimations({
+        trigger: '.navbar',
+        start: 'center top',
+        end: 'center top'
+      }, false);
       document.body.onscroll = () => {
         this.setObjectScroll();
       };
     } else {
-      this.setScrollSnaps();
-      this.setHomeScreenAnimations();
-      this.setParticleGridScroll();
+      this.setHomeScreenAnimations({
+        trigger: undefined,
+        start: 'top bottom',
+        end: '+=10px top'
+      }, false);
+      this.setParticleLineAnimations({
+        trigger: undefined,
+        start: 'top top',
+        end: '+=10px'
+      }, false);
       document.body.onscroll = () => {
         this.setObjectScroll();
-        this.setParticleGridScroll();
+        // this.setParticleGridScroll();
       };
     }
   }
@@ -169,7 +187,7 @@ function calculateVertices(particles) {
     } else if (i % 3 == 1) {
       vertices[~~(i / 3)].push(particles.lineY);
     } else {
-      vertices[~~(i / 3)].push(0);
+      vertices[~~(i / 3)].push(6);
     }
   }
   return new Float32Array(_.flatten(_.shuffle(vertices)));

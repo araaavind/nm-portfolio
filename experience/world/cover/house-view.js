@@ -32,7 +32,7 @@ export default class HouseView {
       new THREE.MeshStandardMaterial({
         map: this.resources.items.sun,
         transparent: true,
-        depthTest: false, // to prevent the glitchy effect in alpha map while rotating
+        depthTest: false, // set to false to prevent the glitchy effect in alpha map while rotating
         side: THREE.DoubleSide
       })
     );
@@ -46,7 +46,7 @@ export default class HouseView {
         new THREE.MeshStandardMaterial({
           map: this.resources.items[itemName],
           transparent: true,
-          depthTest: false, // to prevent the glitchy effect in alpha map while rotating
+          depthTest: true, // set to false to prevent the glitchy effect in alpha map while rotating
           side: THREE.DoubleSide
         })
       );

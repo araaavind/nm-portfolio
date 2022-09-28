@@ -37,7 +37,6 @@ export default class Particles {
                 size: 6,
                 map: this.resources.items.dot,
                 transparent: true,
-                depthTest: false,
                 alphaTest: .5
             })
         );

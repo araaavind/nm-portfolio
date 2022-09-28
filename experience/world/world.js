@@ -42,13 +42,19 @@ export default class World {
     if (this.particles) {
       this.particles.switchDevice(device);
     }
-
     if (this.controls) {
       this.controls.switchDevice(device);
     }
   }
 
-  resize() { }
+  resize() {
+    if (this.houseView) {
+      this.houseView.resize();
+    }
+    if (this.particles) {
+      this.particles.resize();
+    }
+  }
 
   update() {
     if (this.houseView) {

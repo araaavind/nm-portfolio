@@ -147,7 +147,6 @@ main {
   width: 100%;
   margin: 0px auto;
   padding-top: 100px;
-  padding-bottom: 20px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-auto-flow: row;
@@ -238,6 +237,13 @@ section {
 
 .about p {
   text-align: justify;
+}
+
+.skills li {
+  text-align: left;
+  font-size: 1.2rem;
+  margin-left: 40px;
+  padding-bottom: 10px;
 }
 
 /* contact section styling */
