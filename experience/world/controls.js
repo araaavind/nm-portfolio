@@ -14,7 +14,7 @@ export default class Controls {
 
     this.particles = this.experience.world.particles;
     this.houseView = this.experience.world.houseView;
-    // this.setScrollSnaps();
+    this.setScrollSnaps();
     this.setHomeScreenAnimations();
     this.setParticleLineAnimations();
 
@@ -25,7 +25,7 @@ export default class Controls {
     ScrollTrigger.create({
       id: 'scroll-snap',
       snap: {
-        snapTo: [0, .035, .08, .12, .16, .2, .285, .62, .96, 1],
+        snapTo: [0, .035, .08, .12, .16, .2, .32, .68, .96, 1],
         directional: false,
         duration: { min: .2, max: 1.2 },
         ease: 'Power1.easeInOut',
