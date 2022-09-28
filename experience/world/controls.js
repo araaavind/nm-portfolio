@@ -14,15 +14,12 @@ export default class Controls {
 
     this.particles = this.experience.world.particles;
     this.houseView = this.experience.world.houseView;
-    this.setScrollSnaps();
-    this.setHomeScreenAnimations();
-    this.setParticleLineAnimations();
 
-    document.body.onscroll = this.setObjectScroll.bind(this);
+    this.switchDevice(this.sizes.device);
   }
 
   setScrollSnaps() {
-    ScrollTrigger.create({
+    this.scrollSnapTrigger = ScrollTrigger.create({
       id: 'scroll-snap',
       snap: {
         snapTo: [0, .035, .08, .12, .16, .2, .32, .68, .96, 1],
@@ -51,7 +48,7 @@ export default class Controls {
         opacity: 1,
         stagger: .2
       }, '<');
-    ScrollTrigger.create({
+    this.homeScreenTrigger = ScrollTrigger.create({
       id: 'home-screen',
       animation: menuTl,
       trigger: '.navbar',
@@ -95,6 +92,16 @@ export default class Controls {
     });
   }
 
+  setParticleGridScroll() {
+    const top = document.body.getBoundingClientRect().top;
+    this.particles.particleMesh.position.y = this.particles.y + -top * .075;
+    if (window.scrollY > 20) {
+      document.querySelector('.navbar').classList.add('sticky');
+    } else {
+      document.querySelector('.navbar').classList.remove('sticky');
+    }
+  }
+
   setObjectScroll() {
     const top = document.body.getBoundingClientRect().top;
     this.houseView.view.position.y = this.houseView.y + -top * .075;
@@ -126,6 +133,26 @@ export default class Controls {
     // this.houseView.view.getObjectByName('birds').scale.y = 1 + top * .000046;
 
     // this.
+  }
+
+  switchDevice(device) {
+    ScrollTrigger.killAll();
+    if (device === 'desktop') {
+      this.setScrollSnaps();
+      this.setHomeScreenAnimations();
+      this.setParticleLineAnimations();
+      document.body.onscroll = () => {
+        this.setObjectScroll();
+      };
+    } else {
+      this.setScrollSnaps();
+      this.setHomeScreenAnimations();
+      this.setParticleGridScroll();
+      document.body.onscroll = () => {
+        this.setObjectScroll();
+        this.setParticleGridScroll();
+      };
+    }
   }
 
   resize() { }

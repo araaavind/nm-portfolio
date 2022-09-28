@@ -42,6 +42,10 @@ export default class World {
     if (this.particles) {
       this.particles.switchDevice(device);
     }
+
+    if (this.controls) {
+      this.controls.switchDevice(device);
+    }
   }
 
   resize() { }

@@ -10,13 +10,13 @@ export default class Helpers {
     this.camera = this.experience.camera;
 
     this.setHelpers();
-    // this.setOrbitControls();
+    this.setOrbitControls();
   }
 
   setHelpers() {
     this.gridHelper = new THREE.GridHelper(200, 20);
     this.axesHelper = new THREE.AxesHelper(100);
-    this.cameraHelper = new THREE.CameraHelper(this.camera.orthographicCamera);
+    // this.cameraHelper = new THREE.CameraHelper(this.camera.perspectiveCamera);
     // this.scene.add(this.gridHelper);
     // this.scene.add(this.axesHelper);
     // this.scene.add(this.cameraHelper);
@@ -31,6 +31,6 @@ export default class Helpers {
   resize() { }
 
   update() {
-    // this.controls.update();
+    this.controls.update();
   }
 }
