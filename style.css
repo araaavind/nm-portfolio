@@ -231,9 +231,19 @@ section {
   margin-bottom: var(--spacing);
 }
 
-.about,
-.about p {
+.about {
   grid-column: 2 / 12;
+}
+
+.about h2 {
+  text-align: center;
+}
+
+.about p {
+  text-align: justify;
+}
+
+.about a {
   text-align: center;
 }
 
