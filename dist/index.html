@@ -3,63 +3,85 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.0f7a0216.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nanditha's Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
-  <script type="module" crossorigin src="/assets/index.55f31eff.js"></script>
-  <link rel="stylesheet" href="/assets/index.0283b6ce.css">
+  <script type="module" crossorigin src="/assets/index.90e3d4cc.js"></script>
+  <link rel="stylesheet" href="/assets/index.042fa03b.css">
 </head>
 
 <body>
-  <canvas id="bg"></canvas>
+  <div class="experience">
+    <canvas class="experience-canvas"></canvas>
+  </div>
+
+  <nav class="navbar">
+    <div class="max-width">
+      <div class="logo"><a href="#">Portfolio.</a></div>
+      <ul class="menu">
+        <li class="menu-item"><a href="#"
+            onclick="(() => document.body.main.scrollTo({top: 100, left: 0, behavior: 'smooth'})); return false;">Home</a>
+        </li>
+        <li class="menu-item"><a href="#about">About</a></li>
+        <li class="menu-item"><a href="#work">Work</a></li>
+        <li class="menu-item"><a href="#skills">Skills</a></li>
+        <li class="menu-item"><a href="#projects">Projects</a></li>
+        <li class="menu-item"><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu-btn" onclick="(() => {
+        document.querySelector('.navbar .menu').classList.toggle('active');
+        document.querySelector('.navbar .menu-btn i').classList.toggle('active');
+        document.querySelector('body').classList.toggle('menu-open');
+      })();">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
 
   <main>
-
-    <header id="home">
-      <h1>Hello!</h1>
-      <p>I'm <b>Nanditha</b>, a design-minded architect focused on building
-        elegant structures & experiences.</p>
+    <header class="home" id="home">
+      <h1>
+        <span class="title" style="display: inline-block; transform: translateY(100px); opacity: 0;">NANDITHA</span>
+        <br />
+        <span class="title" style="display: inline-block; transform: translateY(100px); opacity: 0;">MANOJ</span>
+      </h1>
     </header>
 
-    <section id="about">
-      <h2>About me</h2>
+    <section class="about" id="about">
+      <h2>About</h2>
       <div class="about-content">
         <p>
-          I'm a final year undergraduate at the Indian Institute of Information Technology Pune majoring in
-          Computer Science and Engineering, a programmer by passion and an open-source enthusiast, looking
-          forward to contribute to the advancement of computer science.
-          I, along with my team, had won the Smart India Hackathon 2019 edition for the problem statement
-          "Inconsistency detection in medical annotations" under ezDI. During the summer internship in my
-          sophomore year, I worked with Dr. K. Chandrasekaran at NIT Surathkal
-          and published a research paper on "Data-Driven Stillbirth Prediction and Analysis of Risk Factors in
-          Pregnancy".
-          Recently, I've been developing web applications, exploring MERN stack, web sockets and cloud
-          databases.
+          Nanditha is an avant-garde architect and a creative thinker with more than three years of experience in
+          designing artful yet pragmatic structures. After completing her formal education in Architecture from the
+          College of Engineering, Trivandrum, she worked in various innovative architectural studios in and around
+          Kerala and Bangalore. Influenced by the likes of Geoffrey Bawa and Marina Tabassum, Nanditha shares a similar
+          sensitive approach to design, blending ethnicity in to contemporary architecture. This is apparent from her
+          go-to material palette comprising mainly of rustic bricks, exposed concrete, jali and red-oxide. I'm writing
+          this at 11:15pm keeping you waiting. So entha vecha baaki ne thanne eythikko tto. Oh, and about you on a
+          personal level, you are the best thing that happened to me. You have been the sweetest and the bestestest
+          partner. Don't be sad about the fact that you are getting a year older than me on
+          your bdays. You being born in itself is a reason to celebrate. Thank you for existing. And for being a great
+          human. And most importantly for choosing me. I love you sooooo much. <br /> Happy birthday Djyouuuuuuu!❤️🐽
         </p>
-        <a href="https://drive.google.com/file/d/1XS5WcyKyFFRxiDVf800RS0bP7KAE4SV4/view?usp=sharing" target="_blank"
-          rel="noopener noreferrer">Download Portfolio</a>
+        <a href="#about" target="_blank" rel="noopener noreferrer">Download Portfolio</a>
       </div>
     </section>
 
-    <section id="experience">
+    <section class="work">
       <h2>Work Experience</h2>
-      <div class="experience-content">
-        <h3>McDonalds</h3>
+      <div class="work-content">
+        <h3>[ar & de]</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est
-          laborum.
+          *Insert entha njan ee manshanod paraya*
         </p>
       </div>
     </section>
 
-    <!-- <section id="contact">
+    <section class="contact" id="contact">
       <h2>Contact me</h2>
       <div class="contact-content">
         <div class="column left">
@@ -75,7 +97,7 @@
               <i class="fa fa-map-marker-alt"></i>
               <div class="info">
                 <div class="head">Address</div>
-                <div class="sub-title">"Nandavanam", Kovoor P.O., Kozhikode,
+                <div class="sub-title">"Nandavanam", MLA Road, Kovoor, Chevayoor P.O., Kozhikode,
                   Kerala, India</div>
               </div>
             </div>
@@ -111,17 +133,13 @@
           </form>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <footer>
       <span class="credit">Nanditha Manoj <span class="far fa-copyright"></span> 2022 | All rights
         reserved.</span>
       <span class="social">
-        <!-- <i class="fab fa-github"></i><a href="https://github.com/aravindmathradan">aravindmathradan</a> -->
-        <!-- <i class="fab fa-linkedin"></i><a
-          href="https://www.linkedin.com/in/aravind-unnikrishnan/">aravind-unnikrishnan</a> -->
         <i class="fab fa-instagram"></i><a href="https://www.instagram.com/nanditha_manoj/">nanditha_manoj</a>
-        <!-- <i class="fab fa-twitter"></i><a href="https://twitter.com/arvnd_in">arvnd_in</a> -->
       </span>
     </footer>
   </main>
