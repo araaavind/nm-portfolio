@@ -7,19 +7,10 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "vite --host",
-    "build": "vite build",
-    "serve": "vite preview"
+    "start": "node server.js"
   },
-  "devDependencies": {
-    "events": "^3.3.0",
-    "gsap": "^3.11.1",
-    "underscore": "^1.13.4",
-    "vite": "^2.9.0"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "three": "^0.139.2",
     "express": "*"
   }
 }
