@@ -2,7 +2,9 @@
   "name": "nanditha-manoj",
   "private": true,
   "version": "1.0.0",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "vite --host",
     "build": "vite build",
     "serve": "vite preview"
