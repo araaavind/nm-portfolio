@@ -15,10 +15,12 @@ export default defineConfig({
   build: {
     outDir: resolve(__dirname, 'dist/'),
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'src/index.html'),
-        login: resolve(__dirname, 'src/login/index.html')
-      }
+      input: [
+        resolve(__dirname, 'src/index.html'),
+        resolve(__dirname, 'src/admin/index.html'),
+        resolve(__dirname, 'src/admin/login.html'),
+        resolve(__dirname, 'src/admin/signup.html'),
+      ]
     }
   }
 });

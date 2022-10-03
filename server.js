@@ -1,7 +1,10 @@
-require('express-async-errors');
 const path = require('path');
 const express = require('express');
 const app = express();
+require('express-async-errors');
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
 
 // Db
 const connectDb = require('./db/main-db');
@@ -15,23 +18,20 @@ const errorHandler = require('./middleware/error-handler');
 const admin = require('./routes/admin-route');
 
 app.use(express.json({ limit: '1mb' }));
+app.use('/assets', express.static(path.resolve(__dirname, 'client/dist/assets/')));
+app.use('/static', express.static(path.resolve(__dirname, 'client/dist/static/')));
 
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, '../client/dist/index.html')));
+// Home
+app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, 'client/dist/index.html')));
+
+// Admin route
 app.use('/admin', admin);
-// app.all('*', );
+
+// All routes
+app.all('*', (req, res) => res.send('<h1>(404) You\'ve come a wrong way... </h1>'));
 
 app.use(notFound);
 app.use(errorHandler);
-
-const port = process.env.PORT || 3000;
-const start = async () => {
-  try {
-    app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
-  } catch (error) {
-    console.error(error);
-  }
-}
-start();
 
 // Handling Error
 process.on("unhandledRejection", err => {
