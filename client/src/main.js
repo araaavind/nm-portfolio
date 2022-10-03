@@ -1,4 +1,4 @@
-import './style.css'
+import './styles.css'
 import * as THREE from 'three';
 import Experience from './experience/experience';
 

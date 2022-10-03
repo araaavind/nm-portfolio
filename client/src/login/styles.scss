@@ -1,0 +1,43 @@
+$primary: #cd6530;
+$secondary: #5d5d5d;
+$light: #eeeeee;
+$dark: #3e3e3e;
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+
+.form-control {
+  box-shadow: none;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: solid 1px $secondary;
+  -webkit-transition: border .7s ease-out;
+  -moz-transition: border .7s ease-out;
+  -o-transition: border .7s ease-out;
+  transition: border .7s ease-out;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+  border-bottom: 1px solid $primary;
+}
+
+.btn {
+  color: #fff;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  background-size: 200% auto;
+  background-image: linear-gradient(to right, $secondary 0%, $primary 50%, $dark 100%);
+  transition: .5s;
+}
+
+.btn:hover {
+  color: #fff !important;
+  background-position: right center;
+}
