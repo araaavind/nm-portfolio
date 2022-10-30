@@ -9,6 +9,7 @@ export default class HouseView {
     this.scene = this.experience.scene;
     this.sizes = this.experience.sizes;
     this.resources = this.experience.resources;
+    this.theme = this.experience.world.theme;
     this.view = new THREE.Group();
 
     this.sunInital = { x: 13, y: 13, z: 1.5 };
@@ -19,9 +20,12 @@ export default class HouseView {
       ease: 0.1
     };
 
+    this.mouseClickBound = this.onMouseClick.bind(this);
+    this.touchBound = this.onTouch.bind(this);
+
+    this.onMouseMove();
     this.switchDevice(this.sizes.device);
     this.setView();
-    this.onMouseMove();
   }
 
   setView() {
@@ -30,7 +34,7 @@ export default class HouseView {
     this.sun = new THREE.Mesh(
       new THREE.PlaneGeometry(4.5, 4.5),
       new THREE.MeshStandardMaterial({
-        map: this.resources.items.sun,
+        map: this.resources.items['sun' + (this.theme === 'light' ? '' : '-dark')],
         transparent: true,
         depthTest: false, // set to false to prevent the glitchy effect in alpha map while rotating
         side: THREE.DoubleSide
@@ -44,7 +48,7 @@ export default class HouseView {
       this[itemName] = new THREE.Mesh(
         new THREE.PlaneGeometry(30, 30),
         new THREE.MeshStandardMaterial({
-          map: this.resources.items[itemName],
+          map: this.resources.items[itemName + (this.theme === 'light' ? '' : '-dark')],
           transparent: true,
           depthTest: true, // set to false to prevent the glitchy effect in alpha map while rotating
           side: THREE.DoubleSide
@@ -63,12 +67,54 @@ export default class HouseView {
   }
 
   onMouseMove() {
+    let raycaster = new THREE.Raycaster();
     window.addEventListener('mousemove', e => {
       this.rotation = ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
       this.moveX = ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
-      this.moveY = ((e.clientY - window.innerHeight / 2) * 2) / window.innerHeight;
+      this.moveY = ((e.clientY - window.innerHeight / 2) * 2) / window.innerHeight - 1.2;
       this.lerp.target = { x: this.moveX * .1, y: this.moveY * .1 };
+
+      raycaster.setFromCamera({
+        x: (e.clientX / window.innerWidth) * 2 - 1,
+        y: - (e.clientY / window.innerHeight) * 2 + 1
+      }, this.experience.camera.orthographicCamera);
+      let intersects = raycaster.intersectObjects(this.scene.children);
+      let intersectSun = false;
+      for (let i = 0; i < intersects.length; i++) {
+        if (intersects[i].object.name === 'sun') {
+          intersectSun = true;
+        }
+      }
+      document.body.style.cursor = intersectSun ? 'pointer' : 'default';
     });
+  }
+
+  onMouseClick(e) {
+    let raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera({
+      x: (e.clientX / window.innerWidth) * 2 - 1,
+      y: - (e.clientY / window.innerHeight) * 2 + 1
+    }, this.experience.camera.orthographicCamera);
+    let intersects = raycaster.intersectObjects(this.scene.children);
+    for (let i = 0; i < intersects.length; i++) {
+      if (intersects[i].object.name === 'sun') {
+        this.experience.world.switchTheme(this.experience.world.theme === 'light' ? 'dark' : 'light');
+      }
+    }
+  }
+
+  onTouch(e) {
+    let raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera({
+      x: (e.touches[0].pageX / window.innerWidth) * 2 - 1,
+      y: - (e.touches[0].pageY / window.innerHeight) * 2 + 1,
+    }, this.experience.camera.orthographicCamera);
+    let intersects = raycaster.intersectObjects(this.scene.children);
+    for (let i = 0; i < intersects.length; i++) {
+      if (intersects[i].object.name === 'sun') {
+        this.experience.world.switchTheme(this.experience.world.theme === 'light' ? 'dark' : 'light');
+      }
+    }
   }
 
   switchDevice(device) {
@@ -77,13 +123,24 @@ export default class HouseView {
       this.y = -2.25;
       this.z = 0;
       this.scale = 1;
+      window.addEventListener('mousedown', this.mouseClickBound);
+      window.removeEventListener('touchstart', this.touchBound);
     } else {
       this.x = -.55;
       this.y = 4.32;
       this.z = 0;
       this.scale = .6;
+      window.removeEventListener('mousedown', this.mouseClickBound);
+      window.addEventListener('touchstart', this.touchBound);
     }
     this.resize();
+  }
+
+  switchTheme(theme) {
+    this.theme = theme;
+    _.each(this.view.children, mesh => {
+      mesh.material.map = this.resources.items[mesh.name + (this.theme === 'light' ? '' : '-dark')]
+    });
   }
 
   resize() {

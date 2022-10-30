@@ -3,16 +3,12 @@
 
 :root {
   --spacing: 300px;
-  --primary: #cd6530;
-  --secondary: #5d5d5d;
-  --lighter: #eeeeee;
-  --light: #b2b2b2;
-  --dark: #525252;
-  --darker: #3e3e3e;
 
   font-family: 'Ubuntu', sans-serif;
   font-weight: 400;
   font-style: normal;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 * {
@@ -27,12 +23,49 @@ html {
 }
 
 body {
+  --primary: #cd6530;
+  --secondary: #5d5d5d;
+  --lighter: #eeeeee;
+  --light: #b2b2b2;
+  --dark: #525252;
+  --darker: #3e3e3e;
+  --background: #fff;
+  --navbar: #f4f4f4;
+  --menu-bg: #333333;
+  --text: #333333;
+  --link: #333333;
+  --button-first: #fbfbfb;
+  --button-second: #f9f2e7;
+  --button-third: #ffddd0;
+  --scroll-thumb: #a39b96;
+  --scroll-track: #ffffff;
+
   position: absolute;
   top: 0;
   left: 0;
   margin: 0;
   width: 100%;
   height: 100%;
+  background-color: var(--background);
+}
+
+body.dark-theme {
+  --primary: #ffd7a5;
+  --secondary: #5d5d5d;
+  --lighter: #eeeeee;
+  --light: #b2b2b2;
+  --dark: #525252;
+  --darker: #3e3e3e;
+  --background: #1d1c23;
+  --navbar: #3b3b3f;
+  --menu-bg: #6d6d78;
+  --text: #f0e9ea;
+  --link: #d4d4d4;
+  --button-first: #232325;
+  --button-second: #363639;
+  --button-third: #8c6151;
+  --scroll-thumb: #494a54;
+  --scroll-track: #1d1c23;
 }
 
 .experience {
@@ -65,7 +98,7 @@ body {
 
 .navbar.sticky {
   padding: 15px 0;
-  background: #f4f4f4;
+  background: var(--navbar);
 }
 
 .navbar .max-width {
@@ -100,7 +133,7 @@ body {
 }
 
 .navbar .menu li a {
-  color: #333333;
+  color: var(--text);
   font-size: 18px;
   font-weight: 500;
   margin-left: 25px;
@@ -116,7 +149,7 @@ body {
 }
 
 .menu-btn {
-  color: #333333;
+  color: var(--text);
   font-size: 23px;
   cursor: pointer;
   display: none;
@@ -134,7 +167,7 @@ body {
   line-height: 45px;
   z-index: 9999;
   cursor: pointer;
-  color: #333333;
+  color: var(--text);
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
@@ -146,7 +179,7 @@ body {
 }
 
 main {
-  color: #333333;
+  color: var(--text);
   position: absolute;
   top: 0;
   left: 0;
@@ -168,7 +201,7 @@ h3 {
 
 h1 {
   font-size: 3.5rem;
-  color: #333333;
+  color: var(--text);
 }
 
 h3 {
@@ -189,13 +222,11 @@ h2 {
   padding: 15px 22.5px;
   text-align: center;
   border-radius: .35em;
-  background-color: #ebebeb;
   text-decoration: none;
 }
 
 .about-content a:hover {
   color: var(--primary);
-  background-color: #f5f5f5;
 }
 
 p {
@@ -218,29 +249,20 @@ header h1 {
   letter-spacing: 0.1rem;
   font-weight: 300;
   font-size: 5rem;
-  color: #333333;
+  color: var(--text);
 }
 
-/* header p {
-  margin: 0;
-  padding-bottom: 40px;
-  font-size: 2rem;
-  color: var(--primary);
-  transform: translateX(50px);
-  opacity: 0;
-} */
-
 .btn {
-  color: #222222;
+  color: var(--text);
   outline: none;
   /* box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014; */
   background-size: 200% auto;
-  background-image: linear-gradient(to right, #fbfbfb 0%, #f9f2e7 20%, #ffddd0 50%, #f9f2e7 100%);
+  background-image: linear-gradient(to right, var(--button-first) 0%, var(--button-second) 20%, var(--button-third) 70%, var(--button-second) 100%);
   transition: .4s;
 }
 
 .btn:hover {
-  color: #000 !important;
+  color: var(--text) !important;
   background-position: right center;
 }
 
@@ -313,15 +335,16 @@ section {
 
 .contact .contact-content .row i {
   font-size: 25px;
-  color: #333333;
+  color: var(--text);
 }
 
 .contact .contact-content .info .head {
+  color: var(--text);
   font-weight: 500;
 }
 
 .contact .contact-content .info .sub-title {
-  color: #000000;
+  color: var(--text);
 }
 
 .contact .right form .fields {
@@ -348,9 +371,9 @@ section {
 .contact .right form .textarea textarea {
   height: 100%;
   width: 100%;
-  background-color: #00000000;
-  border: 1px solid #494949;
-  color: #333333;
+  border: 1px solid var(--darker);
+  background-color: var(--background);
+  color: var(--text);
   border-radius: .25em;
   outline: none;
   /* padding: 0 15px; */
@@ -375,7 +398,7 @@ section {
   height: 100%;
   font-size: 20px;
   font-weight: 100;
-  border: 1px solid #494949;
+  border: 1px solid var(--darker);
   box-shadow: none;
   border-radius: .25em;
   cursor: pointer;
@@ -383,7 +406,7 @@ section {
 
 
 footer {
-  background-color: #f2f2f2;
+  background-color: var(--navbar);
   grid-column: 1 / 13;
   font-size: 1rem;
   padding: 25px;
@@ -399,11 +422,33 @@ footer .social i {
 }
 
 footer .social a {
-  color: #333333;
+  color: var(--text);
+  transition: all .5s;
 }
 
 footer .social a:hover {
-  color: #494949;
+  color: var(--primary);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-corner {
+  background: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 5px;
 }
 
 @media (max-width: 1280px) {}
@@ -419,7 +464,7 @@ footer .social a:hover {
   }
 
   .menu-btn i.active::before {
-    color: #fff;
+    color: var(--lighter);
     content: "\f00d";
   }
 
@@ -430,14 +475,14 @@ footer .social a:hover {
     height: 100vh;
     width: 100%;
     padding-top: 80px;
-    background: #333333;
+    background: var(--menu-bg);
     text-align: center;
     transition: all 0.3s ease;
-    visibility: hidden;
+    transform: translateX(-100%);
   }
 
   .navbar .menu.active {
-    visibility: visible;
+    transform: translateX(0);
   }
 
   body.menu-open {
@@ -449,7 +494,7 @@ footer .social a:hover {
   }
 
   .navbar .menu li a {
-    color: #fff;
+    color: var(--lighter);
     display: inline-block;
     margin: 40px 0;
     font-size: 25px;

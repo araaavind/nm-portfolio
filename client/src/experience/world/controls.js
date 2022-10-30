@@ -10,6 +10,7 @@ export default class Controls {
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.time = this.experience.time;
+    this.theme = this.experience.world.theme;
     GSAP.registerPlugin(ScrollTrigger);
 
     this.particles = this.experience.world.particles;
@@ -71,9 +72,10 @@ export default class Controls {
         },
       })
       .to(this.particles.particleMesh.material.color, {
-        r: .42,
-        g: .42,
-        b: .42,
+        id: 'particle-line-color',
+        r: this.theme === 'light' ? .42 : 1,
+        g: this.theme === 'light' ? .42 : 1,
+        b: this.theme === 'light' ? .42 : 1,
         ease: 'Power1.easeInOut'
       }, '<');
     ScrollTrigger.create({
@@ -91,7 +93,7 @@ export default class Controls {
       },
       onEnterBack: () => {
         document.querySelector('.navbar').classList.remove('sticky');
-      },
+      }
     });
   }
 
@@ -171,6 +173,14 @@ export default class Controls {
         // this.setParticleGridScroll();
       };
     }
+  }
+
+  switchTheme(theme) {
+    this.theme = theme;
+    let particleST = ScrollTrigger.getById('particle-line');
+    let lineColor = this.theme === 'light' ? { r: .42, g: .42, b: .42 } : { r: 1, g: 1, b: 1 }
+    Object.assign(particleST.animation.getById('particle-line-color').vars, lineColor);
+    particleST.animation.getById('particle-line-color').invalidate();
   }
 
   resize() { }

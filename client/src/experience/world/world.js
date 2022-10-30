@@ -11,6 +11,7 @@ export default class World {
     this.scene = this.experience.scene;
     this.camera = this.experience.camera;
     this.resources = this.experience.resources;
+    this.theme = 'light';
     this.resources.on('ready', () => {
       this.setCamera();
       this.setLight();
@@ -47,12 +48,29 @@ export default class World {
     }
   }
 
+  switchTheme(theme) {
+    this.theme = theme;
+    document.body.classList.toggle('dark-theme');
+    if (this.houseView) {
+      this.houseView.switchTheme(this.theme);
+    }
+    if (this.particles) {
+      this.particles.switchTheme(this.theme);
+    }
+    if (this.controls) {
+      this.controls.switchTheme(this.theme);
+    }
+  }
+
   resize() {
     if (this.houseView) {
       this.houseView.resize();
     }
     if (this.particles) {
       this.particles.resize();
+    }
+    if (this.controls) {
+      this.controls.resize();
     }
   }
 
