@@ -50,13 +50,28 @@ export default class Particles {
       this.x = -(((this.nx * this.w) - this.w) / 2) * this.scale - (this.sizes.width / 72);
       this.y = -(((this.ny * this.h) - this.h) / 2) * this.scale - 1.25;
       this.z = 0;
-      this.lineY = 38.85;
+      /*
+        The adjustment made for responsive navbar in phones and tablets.
+        => 0.096 = navbar height in fraction of window height(0.06) + navbar padding in fraction of window height(0.018 + 0.018).
+        Normalised values of orthographic camera view are unprojected to get the coordinates in 3D space.
+        this.y is subtracted for adjusting the mesh y position to each point.
+        .1 is subtracted for better visibility.
+      */
+      this.lineY = new THREE.Vector3(0, (1 - (2 * 0.096)), -1).unproject(this.experience.camera.orthographicCamera).y - this.y - .1;
     } else {
       this.scale = .65;
       this.x = -(((this.nx * this.w) - this.w) / 2) * this.scale;
-      this.y = -(((this.ny * this.h) - this.h) / 2) * this.scale + (this.sizes.height / 144);
+      this.y = -(((this.ny * this.h) - this.h) / 2) * this.scale + (this.sizes.height / 172);
       this.z = 0;
-      this.lineY = 40.6;
+      /*
+        The adjustment made for responsive navbar in phones and tablets.
+        => 0.096 = navbar height in fraction of window height(0.06) + navbar padding in fraction of window height(0.018 + 0.018).
+        Normalised values of orthographic camera view are unprojected to get the coordinates in 3D space.
+        this.y is subtracted for adjusting the mesh y position to each point.
+        scale factor of .65 has been adjusted for mobile devices.
+        .1 is subtracted for better visibility.
+      */
+      this.lineY = (new THREE.Vector3(0, (1 - (2 * 0.096)), -1).unproject(this.experience.camera.orthographicCamera).y - this.y) * (1 / .65) - .1;
     }
     this.resize();
   }

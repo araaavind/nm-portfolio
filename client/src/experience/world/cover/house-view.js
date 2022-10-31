@@ -127,7 +127,7 @@ export default class HouseView {
       window.removeEventListener('touchstart', this.touchBound);
     } else {
       this.x = -.55;
-      this.y = 4.32;
+      this.y = this.sizes.height / 172;
       this.z = 0;
       this.scale = .6;
       window.removeEventListener('mousedown', this.mouseClickBound);

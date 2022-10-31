@@ -3,6 +3,8 @@
 
 :root {
   --spacing: 300px;
+  --navbar-sticky-padding: '1.8vh 0';
+  --navbar-max-width-height: 6vh;
 
   font-family: 'Ubuntu', sans-serif;
   font-weight: 400;
@@ -97,12 +99,13 @@ body.dark-theme {
 }
 
 .navbar.sticky {
-  padding: 15px 0;
+  padding: var(--navbar-sticky-padding);
   background: var(--navbar);
 }
 
 .navbar .max-width {
   display: flex;
+  height: var(--navbar-max-width-height);
   align-items: center;
   justify-content: space-between;
 }
@@ -501,6 +504,20 @@ footer .social a:hover {
   }
 }
 
+@media (max-width: 960px) {
+  header {
+    grid-column: 1 / span 12;
+    padding: 0px 10px;
+    margin-top: 57vh;
+    margin-bottom: var(--spacing);
+  }
+
+  header h1 {
+    padding: 0;
+    text-align: center;
+  }
+}
+
 @media (max-width: 840px) {
   .home .home-content {
     max-width: 90%;
@@ -577,7 +594,7 @@ footer .social a:hover {
   header {
     grid-column: 1 / span 12;
     padding: 0px 10px;
-    margin-top: 415px;
+    margin-top: 54vh;
     margin-bottom: var(--spacing);
   }
 

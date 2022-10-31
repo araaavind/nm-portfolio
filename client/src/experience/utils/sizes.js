@@ -9,6 +9,7 @@ export default class Sizes extends EventEmitter {
     this.pixelRatio = Math.min(window.devicePixelRatio, 2);
     this.frustrum = 50;
     this.device = this.width < 968 ? 'mobile' : 'desktop';
+    handleNavbarResponsiveness(this.height);
 
     let lastHeight = window.innerHeight;
     let lastWidth = window.innerWidth;
@@ -26,11 +27,18 @@ export default class Sizes extends EventEmitter {
         this.emit('switchdevice', this.device);
       }
 
-      if ((Math.abs(this.height - lastHeight) > 140) || Math.abs(this.width - lastWidth) > 50) { // To prevent full screen resize on mobile browsers
+      // To prevent address bar disappearing on scroll issue in mobile browsers
+      if ((Math.abs(this.height - lastHeight) > 140) || Math.abs(this.width - lastWidth) > 50) {
+        handleNavbarResponsiveness(this.height);
         this.emit('resize');
       }
       lastHeight = this.height;
       lastWidth = this.width;
     });
   }
+}
+
+function handleNavbarResponsiveness(height) {
+  document.documentElement.style.setProperty('--navbar-max-width-height', `${height * 0.06}px`);
+  document.documentElement.style.setProperty('--navbar-sticky-padding', `${height * 0.018}px 0px`);
 }
