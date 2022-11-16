@@ -15,17 +15,20 @@
 
 <body>
 
+  <div class="experience">
+    <canvas class="experience-canvas"></canvas>
+  </div>
+
   <nav class="navbar">
     <div class="max-width">
       <div class="logo"><a href="#">Portfolio.</a></div>
       <ul class="menu">
-        <li class="menu-item"><a href="#"
-            onclick="(() => document.body.main.scrollTo({top: 100, left: 0, behavior: 'smooth'})); return false;">Home</a>
+        <li class="menu-item"><a href="#home" onclick="menuItemClick(this)">Home</a>
         </li>
-        <li class="menu-item"><a href="#about">About</a></li>
-        <li class="menu-item"><a href="#work">Work</a></li>
-        <li class="menu-item"><a href="#skills">Skills</a></li>
-        <li class="menu-item"><a href="#contact">Contact</a></li>
+        <li class="menu-item"><a href="#about" onclick="menuItemClick(this)">About</a></li>
+        <li class="menu-item"><a href="#work" onclick="menuItemClick(this)">Work</a></li>
+        <li class="menu-item"><a href="#skills" onclick="menuItemClick(this)">Skills</a></li>
+        <li class="menu-item"><a href="#contact" onclick="menuItemClick(this)">Contact</a></li>
       </ul>
 
       <div class="menu-btn" onclick="(() => {
@@ -40,7 +43,7 @@
 
   <main>
     <header class="home snap-section" id="home">
-      <h1>
+      <h1 class="home-title">
         <span class="title" style="display: inline-block; transform: translateY(100px); opacity: 0;">NANDITHA</span>
         <br />
         <span class="title" style="display: inline-block; transform: translateY(100px); opacity: 0;">MANOJ</span>
@@ -48,7 +51,7 @@
     </header>
 
     <section class="about snap-section" id="about">
-      <h2>About</h2>
+      <h2 class="about-title">About</h2>
       <div class="about-content">
         <p>
           Nanditha is an architect and a creative thinker with more than three years of experience in
@@ -57,13 +60,7 @@
           Kerala and Bangalore. Influenced by the likes of Geoffrey Bawa and Marina Tabassum, Nanditha shares a similar
           sensitive approach to design, blending ethnic avant-garde in to contemporary architecture. This is apparent
           from her
-          go-to material palette comprising of rustic bricks, exposed concrete, jali and red-oxide. I'm writing
-          this at 11:15pm keeping you waiting. So entha vecha baaki ne thanne eythikko tto. Oh, and about you on a
-          personal level, you are the best thing that happened to me. You have been the sweetest and the bestestest
-          partner. Don't be sad about the fact that you are getting a year older than me on
-          your bdays. Your birth in itself is a reason for me to celebrate. Thank you for existing. And for being a
-          great
-          human. And most importantly for choosing me. I love you sooooo much.<br /> Happy birthday Djyouuuuuuu!❤️🐽
+          go-to material palette comprising of rustic bricks, exposed concrete, jali and red-oxide.
         </p>
         <a class="btn" href="https://drive.google.com/file/d/1Gemulhkn8KUmoY3c_EmDt6T6iiMiksPU/view?usp=sharing"
           target="_blank" rel="noopener noreferrer">View Resume</a>
@@ -71,11 +68,19 @@
     </section>
 
     <section class="work snap-section" id="work">
-      <h2>Work Experience</h2>
+      <h2 class="work-title">Work Experience</h2>
       <div class="work-content">
         <h3>[ar & de]</h3>
         <p>
-          *Insert entha njan ee manshanod paraya*
+          Kozhikode, Kerala (India).
+        </p>
+        <h3>Junior architect at MyInnoSpace</h3>
+        <p>
+          Edapally, Kerala (India).
+        </p>
+        <h3>Internship at MyInnoSpace</h3>
+        <p>
+          Edapally, Kerala (India).
         </p>
       </div>
     </section>
@@ -160,10 +165,6 @@
         reserved.</span>
     </footer>
   </main>
-
-  <div class="experience">
-    <canvas class="experience-canvas"></canvas>
-  </div>
 
   <script type="module" src="/main.js"></script>
 </body>

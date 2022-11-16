@@ -110,40 +110,12 @@ export default class Controls {
   setObjectScroll() {
     const top = document.body.getBoundingClientRect().top;
     this.houseView.view.position.y = this.houseView.y + -top * .075;
-    // this.houseView.view.rotation.x = -top * .005;
-    // this.houseView.view.getObjectByName('bg').position.y = -top * .04;
-    // this.houseView.view.getObjectByName('mount1').position.y = -top * .042;
-    // this.houseView.view.getObjectByName('mount2').position.y = -top * .044;
-    // this.houseView.view.getObjectByName('mount3').position.y = -top * .046;
-    // this.houseView.view.getObjectByName('mount4').position.y = -top * .048;
-    // this.houseView.view.getObjectByName('mount5').position.y = -top * .05;
-    // this.houseView.view.getObjectByName('houseAndTrees').position.y = -top * .052;
-    // this.houseView.view.getObjectByName('birds').position.y = -top * .054;
-
-    // this.houseView.view.getObjectByName('bg').scale.y = 1 + top * .00055;
-    // this.houseView.view.getObjectByName('bg').scale.x = 1 + top * .00055;
-    // this.houseView.view.getObjectByName('mount1').scale.y = 1 + top * .0006;
-    // this.houseView.view.getObjectByName('mount1').scale.y = 1 + top * .0006;
-    // this.houseView.view.getObjectByName('mount2').scale.y = 1 + top * .000056;
-    // this.houseView.view.getObjectByName('mount3').scale.y = 1 + top * .000054;
-    // this.houseView.view.getObjectByName('mount4').scale.y = 1 + top * .000052;
-
-    // this.houseView.view.getObjectByName('bg').scale.set(1 + top * .0013, 1 + top * .0013);
-    // this.houseView.view.getObjectByName('mount1').scale.set(1 + top * .00115, 1 + top * .00115);
-    // this.houseView.view.getObjectByName('mount2').scale.set(1 + top * .001, 1 + top * .001);
-    // this.houseView.view.getObjectByName('mount3').scale.set(1 + top * .00085, 1 + top * .00085);
-    // this.houseView.view.getObjectByName('mount4').scale.set(1 + top * .0007, 1 + top * .0007);
-    // this.houseView.view.getObjectByName('mount5').scale.set(1 + top * .00055, 1 + top * .00055);
-    // this.houseView.view.getObjectByName('houseAndTrees').scale.set(1 + top * .0004, 1 + top * .0004);
-    // this.houseView.view.getObjectByName('birds').scale.y = 1 + top * .000046;
-
-    // this.
   }
 
   switchDevice(device) {
     ScrollTrigger.killAll();
     if (device === 'desktop') {
-      this.setScrollSnaps();
+      // this.setScrollSnaps();
       this.setHomeScreenAnimations({
         trigger: '.navbar',
         start: 'top bottom',
@@ -191,9 +163,11 @@ export default class Controls {
 function calculateVertices(particles) {
   let vertices = [];
   let widthFactor = particles.lineY < 45 ? 2 : 1;
+  let lineLength = ((particles.nx * particles.ny) - 1) * (particles.w / widthFactor);
   for (let i = 0; i < particles.nx * particles.ny * 3; i++) {
     if (i % 3 == 0) {
-      vertices.push([(i / 3) * (particles.w / widthFactor) - 50]);
+      let lineX = (i / 3) * (particles.w / widthFactor);
+      vertices.push([(lineX - particles.x - (lineLength / 2)) / particles.scale]);
     } else if (i % 3 == 1) {
       vertices[~~(i / 3)].push(particles.lineY);
     } else {
