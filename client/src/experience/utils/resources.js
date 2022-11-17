@@ -34,7 +34,9 @@ export default class Resources extends EventEmitter {
     this.items[asset.name] = file;
     this.loaded++;
     if (this.loaded === this.queue) {
-      this.emit('ready');
+      setTimeout(() => {
+        this.emit('ready');
+      }, 500);
     }
   }
 }

@@ -17,6 +17,7 @@ export default class Controls {
     this.houseView = this.experience.world.houseView;
 
     this.switchDevice(this.sizes.device);
+    this.setObjectScroll();
   }
 
   setScrollSnaps() {
@@ -65,8 +66,8 @@ export default class Controls {
     particleTl
       .to(this.particles.particleMesh.geometry.attributes.position.array, {
         endArray: () => calculateVertices(this.particles),
-        ease: 'Power1.easeInOut',
-        duration: 1.35,
+        ease: 'power1.inOut',
+        duration: 1.5,
         onUpdate: () => {
           this.particles.particleMesh.geometry.attributes.position.needsUpdate = true;
         },
@@ -88,12 +89,12 @@ export default class Controls {
       // scrub: 3,
       invalidateOnRefresh: true,
       markers: showMarkers,
-      onEnter: () => {
-        document.querySelector('.navbar').classList.add('sticky');
-      },
-      onEnterBack: () => {
-        document.querySelector('.navbar').classList.remove('sticky');
-      }
+      // onEnter: () => {
+      //   $('.navbar').addClass('sticky');
+      // },
+      // onEnterBack: () => {
+      //   $('.navbar').removeClass('sticky');
+      // }
     });
   }
 
@@ -101,9 +102,9 @@ export default class Controls {
     const top = document.body.getBoundingClientRect().top;
     this.particles.particleMesh.position.y = this.particles.y + -top * .075;
     if (window.scrollY > 20) {
-      document.querySelector('.navbar').classList.add('sticky');
+      $('.navbar').addClass('sticky');
     } else {
-      document.querySelector('.navbar').classList.remove('sticky');
+      $('.navbar').removeClass('sticky');
     }
   }
 
@@ -113,6 +114,7 @@ export default class Controls {
   }
 
   switchDevice(device) {
+    this.setObjectScroll();
     ScrollTrigger.killAll();
     if (device === 'desktop') {
       // this.setScrollSnaps();
@@ -122,9 +124,9 @@ export default class Controls {
         end: 'center top'
       }, false);
       this.setParticleLineAnimations({
-        trigger: '.navbar',
-        start: 'center top',
-        end: 'center top'
+        trigger: '.home-title',
+        start: '-50px top',
+        end: '-50px top'
       }, false);
       document.body.onscroll = () => {
         this.setObjectScroll();

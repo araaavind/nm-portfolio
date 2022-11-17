@@ -12,16 +12,41 @@
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
   <script type="module" crossorigin src="/assets/modulepreload-polyfill.c7c6310f.js"></script>
-  <script type="module" crossorigin src="/assets/main.ab57da19.js"></script>
-  <link rel="stylesheet" href="/assets/main.9fcdf185.css">
+  <script type="module" crossorigin src="/assets/main.796b7ca1.js"></script>
+  <link rel="stylesheet" href="/assets/main.3a038717.css">
 </head>
 
 <body>
-  <div class="experience">
+  <div class="loading-container" style="visibility: visible;">
+    <div class="loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="experience" style="visibility: hidden;">
     <canvas class="experience-canvas"></canvas>
   </div>
 
-  <nav class="navbar">
+  <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+  </div>
+
+  <nav class="navbar" style="visibility: hidden;">
     <div class="max-width">
       <div class="logo"><a href="#">Portfolio.</a></div>
       <ul class="menu">
@@ -43,7 +68,7 @@
     </div>
   </nav>
 
-  <main>
+  <main style="visibility: hidden;">
     <header class="home snap-section" id="home">
       <h1 class="home-title">
         <span class="title" style="display: inline-block; transform: translateY(100px); opacity: 0;">NANDITHA</span>

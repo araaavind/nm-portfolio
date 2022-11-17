@@ -13,6 +13,7 @@ export default class World {
     this.resources = this.experience.resources;
     this.theme = 'light';
     this.resources.on('ready', () => {
+      this.displayPage();
       this.setCamera();
       this.setLight();
       this.particles = new Particles();
@@ -20,6 +21,14 @@ export default class World {
       this.controls = new Controls();
       this.sizes.on('switchdevice', device => this.switchDevice(device));
     });
+  }
+
+  displayPage() {
+    document.querySelector('.loading-container').style.visibility = 'hidden';
+    document.body.style.overflow = 'auto';
+    document.querySelector('.experience').style.visibility = 'visible';
+    document.querySelector('.navbar').style.visibility = 'visible';
+    document.querySelector('main').style.visibility = 'visible';
   }
 
   setCamera() {

@@ -13,13 +13,38 @@
     crossorigin="anonymous" />
 </head>
 
-<body>
+<body style="overflow: hidden;">
 
-  <div class="experience">
+  <div class="loading-container" style="visibility: visible;">
+    <div class="loading">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="experience" style="visibility: hidden;">
     <canvas class="experience-canvas"></canvas>
   </div>
 
-  <nav class="navbar">
+  <div class="scroll-up-btn">
+    <i class="fas fa-angle-up"></i>
+  </div>
+
+  <nav class="navbar" style="visibility: hidden;">
     <div class="max-width">
       <div class="logo"><a href="#">Portfolio.</a></div>
       <ul class="menu">
@@ -41,7 +66,7 @@
     </div>
   </nav>
 
-  <main>
+  <main style="visibility: hidden;">
     <header class="home snap-section" id="home">
       <h1 class="home-title">
         <span class="title" style="display: inline-block; transform: translateY(100px); opacity: 0;">NANDITHA</span>

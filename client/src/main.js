@@ -1,31 +1,51 @@
-import './styles.css'
+import './styles.css';
+import './loading.css';
+import $ from 'jquery';
 import GSAP from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import Experience from './experience/experience';
 
-const experience = new Experience(document.querySelector('.experience-canvas'));
+const experience = new Experience($('.experience-canvas')[0]);
 GSAP.registerPlugin(ScrollToPlugin);
 
 const scrollPoints = {
-  'Home': document.querySelector('.home').getBoundingClientRect().top,
-  'About': document.querySelector('.about').getBoundingClientRect().top,
-  'Work': document.querySelector('.work').getBoundingClientRect().top,
-  'Skills': document.querySelector('.skills').getBoundingClientRect().top,
-  'Contact': document.querySelector('.contact').getBoundingClientRect().top
+  'Home': $('.home')[0].getBoundingClientRect().top,
+  'About': $('.about')[0].getBoundingClientRect().top,
+  'Work': $('.work')[0].getBoundingClientRect().top,
+  'Skills': $('.skills')[0].getBoundingClientRect().top,
+  'Contact': $('.contact')[0].getBoundingClientRect().top
 };
 
 function menuItemClick(e) {
   const body = document.body, html = document.documentElement;
   const height = Math.max(body.scrollHeight, body.offsetHeight,
     html.clientHeight, html.scrollHeight, html.offsetHeight);
-  const navbarHeight = document.querySelector('.navbar').getBoundingClientRect().height;
+  const navbarHeight = $('.navbar')[0].getBoundingClientRect().height;
   GSAP.to(window, { duration: .02, scrollTo: scrollPoints[e.textContent] - navbarHeight });
 
-  if (document.querySelector('.navbar .menu').classList.contains('active')) {
-    document.querySelector('.navbar .menu').classList.toggle('active');
-    document.querySelector('.navbar .menu-btn i').classList.toggle('active');
-    document.querySelector('body').classList.toggle('menu-open');
+  if ($('.navbar .menu')[0].hasClass('active')) {
+    $('.navbar .menu').toggleClass('active');
+    $('.navbar .menu-btn i').toggleClass('active');
+    $('body').toggleClass('menu-open');
   }
 }
 
 window.menuItemClick = menuItemClick;
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    $('.navbar').addClass('sticky');
+  } else {
+    $('.navbar').removeClass('sticky');
+  }
+
+  if (window.scrollY > 500) {
+    $('.scroll-up-btn').addClass('show');
+  } else {
+    $('.scroll-up-btn').removeClass('show');
+  }
+});
+
+$('.scroll-up-btn').on('click', () => {
+  $('html').scrollTop(0);
+});
