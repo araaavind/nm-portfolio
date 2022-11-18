@@ -467,7 +467,7 @@ footer .social a:hover {
   }
 
   .menu-btn i.active::before {
-    color: var(--lighter);
+    color: var(--text);
     content: "\f00d";
   }
 
@@ -476,7 +476,7 @@ footer .social a:hover {
     left: 0;
     top: 0;
     height: 100vh;
-    width: 100%;
+    width: 70%;
     padding-top: 80px;
     background: var(--menu-bg);
     text-align: center;

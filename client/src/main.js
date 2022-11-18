@@ -8,22 +8,18 @@ import Experience from './experience/experience';
 const experience = new Experience($('.experience-canvas')[0]);
 GSAP.registerPlugin(ScrollToPlugin);
 
-const scrollPoints = {
-  'Home': $('.home')[0].getBoundingClientRect().top,
-  'About': $('.about')[0].getBoundingClientRect().top,
-  'Work': $('.work')[0].getBoundingClientRect().top,
-  'Skills': $('.skills')[0].getBoundingClientRect().top,
-  'Contact': $('.contact')[0].getBoundingClientRect().top
+const scrollProgress = {
+  'Home': 0,
+  'About': .17,
+  'Work': .368,
+  'Skills': .59,
+  'Contact': .788
 };
 
 function menuItemClick(e) {
-  const body = document.body, html = document.documentElement;
-  const height = Math.max(body.scrollHeight, body.offsetHeight,
-    html.clientHeight, html.scrollHeight, html.offsetHeight);
-  const navbarHeight = $('.navbar')[0].getBoundingClientRect().height;
-  GSAP.to(window, { duration: .02, scrollTo: scrollPoints[e.textContent] - navbarHeight });
+  GSAP.to(window, { duration: .02, scrollTo: scrollProgress[e.textContent] * $('main')[0].scrollHeight });
 
-  if ($('.navbar .menu')[0].hasClass('active')) {
+  if ($('.navbar .menu').hasClass('active')) {
     $('.navbar .menu').toggleClass('active');
     $('.navbar .menu-btn i').toggleClass('active');
     $('body').toggleClass('menu-open');
@@ -48,4 +44,11 @@ window.addEventListener('scroll', () => {
 
 $('.scroll-up-btn').on('click', () => {
   $('html').scrollTop(0);
+});
+
+$('main').on('touchstart', () => {
+  if ($('.menu').hasClass('active')) {
+    $('.menu').toggleClass('active');
+    $('.navbar .menu-btn i').toggleClass('active');
+  }
 });
