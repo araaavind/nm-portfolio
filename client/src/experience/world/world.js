@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import * as THREE from 'three';
 import Experience from '../experience';
 import HouseView from './cover/house-view';
@@ -24,11 +25,12 @@ export default class World {
   }
 
   displayPage() {
-    document.querySelector('.loading-container').style.visibility = 'hidden';
-    document.body.style.overflow = 'auto';
-    document.querySelector('.experience').style.visibility = 'visible';
-    document.querySelector('.navbar').style.visibility = 'visible';
-    document.querySelector('main').style.visibility = 'visible';
+    $('body').css({ overflow: 'auto' });
+    $('.loading-container').css({ visibility: 'hidden' });
+    $('.experience').css({ visibility: 'visible' });
+    $('.navbar').css({ visibility: 'visible' });
+    $('.scroll-up-btn').css({ visibility: 'visible' });
+    $('main').css({ visibility: 'visible' });
   }
 
   setCamera() {
