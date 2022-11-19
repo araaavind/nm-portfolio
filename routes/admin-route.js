@@ -8,7 +8,7 @@ router.route('/')
     if (!req.user) {
       return res.redirect('/admin/login');
     }
-    return res.sendFile(path.resolve(__dirname, '../client/dist/admin/index.html'))
+    return res.sendFile(path.resolve(__dirname, '../client/dist/admin/index.html'));
   });
 
 router.route('/login')
@@ -17,5 +17,13 @@ router.route('/login')
 router.route('/signup')
   .get((req, res) => res.sendFile(path.resolve(__dirname, '../client/dist/admin/signup.html')))
   .post(register);
+
+router.route('/birthday')
+  .get((req, res) => {
+    if (!req.user) {
+      return res.redirect('/admin/login');
+    }
+    return res.sendFile(path.resolve(__dirname, '../client/dist/birthday/index.html'));
+  });
 
 module.exports = router;
