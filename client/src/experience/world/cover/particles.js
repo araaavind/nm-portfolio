@@ -15,10 +15,11 @@ export default class Particles {
     this.w = .613556;
     this.h = 1.06470;
     this.particleGeometry = new THREE.BufferGeometry();
+    this.particleMesh = new THREE.Points();
     this.vertices = new Float32Array(this.nx * this.ny * 3);
 
-    this.setParticles();
     this.switchDevice(this.sizes.device);
+    this.setParticles();
   }
 
   setParticles() {
@@ -31,16 +32,14 @@ export default class Particles {
       }
     }
     this.particleGeometry.setAttribute('position', new THREE.BufferAttribute(this.vertices, 3));
-    this.particleMesh = new THREE.Points(
-      this.particleGeometry,
-      new THREE.PointsMaterial({
-        // color: this.theme === 'light' ? '#cccccc' : '#ffffff',
-        size: 6,
-        map: this.resources.items['dot' + (this.theme === 'light' ? '' : '-dark')],
-        transparent: true,
-        alphaTest: .5
-      })
-    );
+    this.particleMesh.geometry = this.particleGeometry;
+    this.particleMesh.material = new THREE.PointsMaterial({
+      // color: this.theme === 'light' ? '#cccccc' : '#ffffff',
+      size: this.dotSize,
+      map: this.resources.items['dot' + (this.theme === 'light' ? '' : '-dark')],
+      transparent: true,
+      alphaTest: .5
+    });
     this.scene.add(this.particleMesh);
   }
 
@@ -50,6 +49,7 @@ export default class Particles {
       this.x = -(((this.nx * this.w) - this.w) / 2) * this.scale - (this.sizes.width / 72);
       this.y = -(((this.ny * this.h) - this.h) / 2) * this.scale - 1.25;
       this.z = 0;
+      this.dotSize = 6;
       /*
         The adjustment made for responsive navbar in phones and tablets.
         => 0.096 = navbar height in fraction of window height(0.06) + navbar padding in fraction of window height(0.018 + 0.018).
@@ -63,6 +63,7 @@ export default class Particles {
       this.x = -(((this.nx * this.w) - this.w) / 2) * this.scale;
       this.y = -(((this.ny * this.h) - this.h) / 2) * this.scale + (this.sizes.height / 172);
       this.z = 0;
+      this.dotSize = 5;
       /*
         The adjustment made for responsive navbar in phones and tablets.
         => 0.096 = navbar height in fraction of window height(0.06) + navbar padding in fraction of window height(0.018 + 0.018).
