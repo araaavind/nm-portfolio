@@ -1,10 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Lato:wght@300;400;500;700&family=Ubuntu:wght@300;400;500&display=swap');
 @import url("https://use.typekit.net/jmk3xov.css");
 
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-LIGHT.OTF) format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-REGULAR.OTF) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-SEMIBOLD.OTF) format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-SEMIBOLDIT.OTF) format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-BOLD.OTF) format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-BOLDIT.OTF) format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
 :root {
   --spacing: 300px;
 
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'MyriadPro', sans-serif;
   font-weight: 400;
   font-style: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

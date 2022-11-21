@@ -18,6 +18,7 @@ export default defineConfig({
       input: [
         resolve(__dirname, 'src/index.html'),
         resolve(__dirname, 'src/birthday/index.html'),
+        resolve(__dirname, 'src/404/index.html'),
         resolve(__dirname, 'src/admin/index.html'),
         resolve(__dirname, 'src/admin/login.html'),
         resolve(__dirname, 'src/admin/signup.html'),
