@@ -1,13 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Lato:wght@300;400;500;700&family=Ubuntu:wght@300;400;500&display=swap');
 @import url("https://use.typekit.net/jmk3xov.css");
 
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-LIGHT.OTF) format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-REGULAR.OTF) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-SEMIBOLD.OTF) format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-SEMIBOLDIT.OTF) format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-BOLD.OTF) format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: 'MyriadPro';
+  src: url(./public/fonts/MYRIADPRO-BOLDIT.OTF) format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+
 :root {
   --spacing: 300px;
   --navbar-sticky-padding: '1.8vh 0';
   --navbar-max-width-height: 6vh;
 
-  font-family: 'Ubuntu', sans-serif;
-  font-weight: 400;
+  font-family: 'MyriadPro', sans-serif;
+  font-weight: 100;
   font-style: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: transparent;
@@ -94,7 +133,8 @@ body.dark-theme {
   width: 100%;
   z-index: 999;
   padding: 30px 0;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'MyriadPro', sans-serif;
+  font-weight: 400;
   transition: all 0.5s ease;
 }
 
@@ -124,8 +164,8 @@ body.dark-theme {
 
 .navbar .logo a {
   color: var(--primary);
-  font-size: 35px;
-  font-weight: 500;
+  font-size: 2.4rem;
+  font-weight: 700;
 }
 
 .navbar .menu .menu-item {
@@ -137,8 +177,8 @@ body.dark-theme {
 
 .navbar .menu li a {
   color: var(--text);
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 700;
   margin-left: 25px;
   transition: color .3s ease;
 }
@@ -197,7 +237,7 @@ main {
 h1,
 h2,
 h3 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'MyriadPro', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -207,20 +247,19 @@ h1 {
   color: var(--text);
 }
 
-h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
 h2 {
   padding-bottom: 40px;
   font-size: 2.5rem;
 }
 
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
 .about-content a {
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   margin-top: 60px;
   padding: 15px 22.5px;
   text-align: center;
@@ -235,7 +274,7 @@ h2 {
 p {
   font-size: 1.35rem;
   line-height: 1.45;
-  font-weight: 300;
+  font-weight: 100;
   text-align: left;
   margin-bottom: 60px;
 }
@@ -249,9 +288,9 @@ header {
 header h1 {
   padding: 160px 0px 125px 40px;
   margin: 0;
-  letter-spacing: 0.1rem;
-  font-weight: 300;
-  font-size: 5rem;
+  letter-spacing: 0.4rem;
+  font-weight: 100;
+  font-size: 5.3rem;
   color: var(--text);
 }
 
@@ -311,7 +350,7 @@ section {
 
 .contact .contact-content .text {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -343,7 +382,7 @@ section {
 
 .contact .contact-content .info .head {
   color: var(--text);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .contact .contact-content .info .sub-title {
@@ -382,7 +421,7 @@ section {
   /* padding: 0 15px; */
   padding-left: 15px;
   font-size: 17px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'MyriadPro', sans-serif;
   box-sizing: border-box;
 }
 
@@ -400,7 +439,7 @@ section {
   width: 100%;
   height: 100%;
   font-size: 20px;
-  font-weight: 100;
+  font-weight: 400;
   border: 1px solid var(--darker);
   box-shadow: none;
   border-radius: .25em;
@@ -417,7 +456,7 @@ footer {
 
 footer .credit {
   float: right;
-  font-weight: 300;
+  font-weight: 100;
 }
 
 footer .social i {
@@ -426,6 +465,7 @@ footer .social i {
 
 footer .social a {
   color: var(--text);
+  font-weight: 400;
   transition: all .5s;
 }
 
