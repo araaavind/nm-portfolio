@@ -28,7 +28,7 @@ app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, 'client/dist/ind
 app.use('/admin', admin);
 
 // All routes
-app.all('*', (req, res) => res.send('<h1>(404) You\'ve come a wrong way... </h1>'));
+app.all('*', (req, res) => res.sendFile(__dirname, 'client/dist/404/index.html'));
 
 app.use(notFound);
 app.use(errorHandler);
